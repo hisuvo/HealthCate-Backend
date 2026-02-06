@@ -1,26 +1,13 @@
-import express, { Application, Request, Response } from "express";
-import { prisma } from "./app/lib/prisma";
+import express, { Application } from "express";
+import { IndexRoutes } from "./app/routes";
 
 const app: Application = express();
 
 app.use(express.urlencoded({ extended: true }));
 
+// middleware to parse JSON bodies
 app.use(express.json());
 
-app.get("/", async (req: Request, res: Response) => {
-  const specialty = await prisma.specialty.create({
-    data: {
-      title: "Cardiology",
-      description: "Heart related treatments",
-      icon: "heart-icon",
-    },
-  });
-
-  res.status(201).json({
-    success: true,
-    message: "API is working",
-    data: specialty,
-  });
-});
+app.use("/api/v1", IndexRoutes);
 
 export default app;
