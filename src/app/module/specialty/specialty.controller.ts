@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { Request, Response } from "express";
 import { specialtyService } from "./specialty.service";
 import { catchAsync } from "../../shared/catchAsync";
