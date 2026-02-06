@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { specialtyRoutes } from "../module/specialty.route";
+import { specialtyRoutes } from "../module/specialty/specialty.route";
 
 const router = Router();
 
