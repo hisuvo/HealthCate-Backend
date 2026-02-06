@@ -4,5 +4,8 @@ import { specialtyController } from "./specialty.controller";
 const router = Router();
 
 router.post("/", specialtyController.createSpecialty);
+router.get("/", specialtyController.getAllSpecialties);
+router.delete("/:specialtyId", specialtyController.deleteSpecialty);
+router.patch("/:specialtyId", specialtyController.updateSpecialty);
 
 export const specialtyRoutes = router;
