@@ -26,7 +26,7 @@ export const auth = betterAuth({
         defaultValue: UserStatus.ACTIVE,
       },
 
-      needPasswoedChangle: {
+      needPasswordChange: {
         type: "boolean",
         required: true,
         defaultValue: false,
@@ -40,7 +40,7 @@ export const auth = betterAuth({
 
       deletedAt: {
         type: "date",
-        required: true,
+        required: false,
         defaultValue: null,
       },
     },
