@@ -22,7 +22,7 @@ const loadEnvVariables = (): EnvConfig => {
   requiredEnvVariable.forEach((variable) => {
     if (!process.env[variable]) {
       throw new Error(
-        `Environment variable ${variable} is required but not set`,
+        `Environment variable ${variable} is required but not set in .env file`,
       );
     }
   });
