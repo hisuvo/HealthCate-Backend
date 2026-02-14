@@ -1117,13 +1117,14 @@ export const DoctorScalarFieldEnum = {
   registrationNumber: 'registrationNumber',
   experience: 'experience',
   gender: 'gender',
+  qualification: 'qualification',
   appointmentFee: 'appointmentFee',
   currentWorkingPlace: 'currentWorkingPlace',
   designation: 'designation',
   averageRating: 'averageRating',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  UserId: 'UserId'
+  userId: 'userId'
 } as const
 
 export type DoctorScalarFieldEnum = (typeof DoctorScalarFieldEnum)[keyof typeof DoctorScalarFieldEnum]
