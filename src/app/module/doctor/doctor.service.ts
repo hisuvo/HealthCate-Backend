@@ -54,10 +54,24 @@ const updateDoctor = async (
 };
 
 const deleteDoctor = async (doctorId: string) => {
-  const deleteDoctor = await prisma.$transaction(async (tx) => {
-    const result = await tx.doctor.delete({
+  const result = await prisma.$transaction(async (tx) => {
+    const doctor = await tx.doctor.findFirst({
       where: {
         id: doctorId,
+        isDeleted: false,
+      },
+    });
+
+    if (!doctor) {
+      throw new Error("Doctor not found or already deleted");
+    }
+
+    return await tx.doctor.update({
+      where: {
+        id: doctorId,
+      },
+      data: {
+        isDeleted: true,
       },
       select: {
         id: true,
@@ -65,11 +79,9 @@ const deleteDoctor = async (doctorId: string) => {
         specialties: true,
       },
     });
-
-    return result;
   });
 
-  return deleteDoctor;
+  return result;
 };
 
 export const DoctorService = {
