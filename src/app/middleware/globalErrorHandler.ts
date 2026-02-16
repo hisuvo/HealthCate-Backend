@@ -3,6 +3,10 @@
 import { NextFunction, Request, Response } from "express";
 import { envVars } from "../config/env";
 import status from "http-status";
+import z from "zod";
+import { IErrorResponse, IErrorSources } from "../interface/error.interface";
+import { handleZodError } from "../errorHalper/handleZodError";
+import AppError from "../errorHalper/AppError";
 
 export const globalErrorHandler = async (
   error: any,
@@ -14,12 +18,39 @@ export const globalErrorHandler = async (
     console.error("Error from Global Error Handler : ", error);
   }
 
-  const statusCode: number = status.INTERNAL_SERVER_ERROR;
-  const message: string = "Internal Server Error";
+  let errorSources: IErrorSources[] = [];
+  let statusCode: number = status.INTERNAL_SERVER_ERROR;
+  let message: string = "Internal Server Error";
+  let stack: string | undefined = undefined;
 
-  res.status(statusCode).json({
+  if (error instanceof z.ZodError) {
+    const simpilifiedError = handleZodError(error);
+    statusCode = simpilifiedError.statusCode as number;
+    message = simpilifiedError.message;
+    errorSources = [...simpilifiedError.errorSources];
+  } else if (error instanceof AppError) {
+    statusCode = error.statusCode;
+    message = error.message;
+    errorSources = [
+      {
+        path: "",
+        message: error.message,
+      },
+    ];
+    stack = error.stack;
+  } else if (error instanceof Error) {
+    statusCode = status.INTERNAL_SERVER_ERROR;
+    message = error.message;
+    stack = error.stack;
+  }
+
+  const errorResponse: IErrorResponse = {
     success: false,
     message: message,
-    error: error.message,
-  });
+    errorSources,
+    error: envVars.NODE_ENV === "development" ? message : undefined,
+    stack: envVars.NODE_ENV === "development" ? stack : undefined,
+  };
+
+  res.status(statusCode).json(errorResponse);
 };

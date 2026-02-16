@@ -1,5 +1,7 @@
+import status from "http-status";
 import { prisma } from "../../lib/prisma";
 import { IUpgradeDoctorPaylod } from "./doctor.interface";
+import AppError from "../../errorHalper/AppError";
 
 const getAllDoctors = async () => {
   const doctors = await prisma.doctor.findMany({
@@ -63,7 +65,10 @@ const deleteDoctor = async (doctorId: string) => {
     });
 
     if (!doctor) {
-      throw new Error("Doctor not found or already deleted");
+      throw new AppError(
+        status.NOT_FOUND,
+        "Doctor not found or already deleted",
+      );
     }
 
     return await tx.doctor.update({

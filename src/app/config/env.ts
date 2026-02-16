@@ -1,4 +1,6 @@
 import dotenv from "dotenv";
+import AppError from "../errorHalper/AppError";
+import status from "http-status";
 
 dotenv.config();
 
@@ -21,7 +23,10 @@ const loadEnvVariables = (): EnvConfig => {
 
   requiredEnvVariable.forEach((variable) => {
     if (!process.env[variable]) {
-      throw new Error(
+      // throw new Error(`Environment variable ${variable} is required but not set in .env file`)
+
+      throw new AppError(
+        status.NOT_FOUND,
         `Environment variable ${variable} is required but not set in .env file`,
       );
     }
