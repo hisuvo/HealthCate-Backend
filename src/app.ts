@@ -2,6 +2,7 @@ import express, { Application } from "express";
 import { IndexRoutes } from "./app/routes";
 import { globalErrorHandler } from "./app/middleware/globalErrorHandler";
 import { notFount } from "./app/middleware/notFound";
+import cookieParser from "cookie-parser";
 
 const app: Application = express();
 
@@ -9,6 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // middleware to parse JSON bodies
 app.use(express.json());
+app.use(cookieParser());
 
 app.use("/api/v1", IndexRoutes);
 

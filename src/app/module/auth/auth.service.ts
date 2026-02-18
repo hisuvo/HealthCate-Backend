@@ -3,6 +3,7 @@ import { UserStatus } from "../../../generated/prisma/enums";
 import AppError from "../../errorHalper/AppError";
 import { auth } from "../../lib/auth";
 import { prisma } from "../../lib/prisma";
+import { tokenUtils } from "../../utils/token";
 
 interface IRegisterPatientPayload {
   name: string;
@@ -38,7 +39,27 @@ const registerPatient = async (payload: IRegisterPatientPayload) => {
       return patientTx;
     });
 
-    return { ...data, patient };
+    const accessToken = tokenUtils.getAccessToken({
+      userId: data.user.id,
+      name: data.user.name,
+      email: data.user.email,
+      role: data.user.role,
+      status: data.user.status,
+      isDeleted: data.user.isDeleted,
+      emailVerified: data.user.emailVerified,
+    });
+
+    const refreshToken = tokenUtils.getRefreshToken({
+      userId: data.user.id,
+      name: data.user.name,
+      email: data.user.email,
+      role: data.user.role,
+      status: data.user.status,
+      isDeleted: data.user.isDeleted,
+      emailVerified: data.user.emailVerified,
+    });
+
+    return { ...data, accessToken, refreshToken, patient };
   } catch (error) {
     console.error("Transection error : ", error);
     await prisma.user.delete({
@@ -74,7 +95,27 @@ const loginPatient = async (payload: ILoginPayload) => {
     throw new AppError(status.NOT_FOUND, "User is deleted");
   }
 
-  return data;
+  const accessToken = tokenUtils.getAccessToken({
+    userId: data.user.id,
+    name: data.user.name,
+    email: data.user.email,
+    role: data.user.role,
+    status: data.user.status,
+    isDeleted: data.user.isDeleted,
+    emailVerified: data.user.emailVerified,
+  });
+
+  const refreshToken = tokenUtils.getRefreshToken({
+    userId: data.user.id,
+    name: data.user.name,
+    email: data.user.email,
+    role: data.user.role,
+    status: data.user.status,
+    isDeleted: data.user.isDeleted,
+    emailVerified: data.user.emailVerified,
+  });
+
+  return { ...data, accessToken, refreshToken };
 };
 
 export const AuthServices = { registerPatient, loginPatient };
