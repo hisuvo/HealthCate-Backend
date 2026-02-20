@@ -728,10 +728,6 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type EnumGenderFieldUpdateOperationsInput = {
-  set?: $Enums.Gender
-}
-
 export type FloatFieldUpdateOperationsInput = {
   set?: number
   increment?: number
