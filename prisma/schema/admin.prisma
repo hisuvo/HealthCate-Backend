@@ -3,7 +3,7 @@ model Admin {
 
     name String
     email String @unique
-    porfilePhoto String?
+    profilePhoto String?
     contactNumber String?
     address String?
     gender Gender

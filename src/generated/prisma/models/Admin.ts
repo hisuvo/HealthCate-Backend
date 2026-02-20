@@ -28,7 +28,7 @@ export type AdminMinAggregateOutputType = {
   id: string | null
   name: string | null
   email: string | null
-  porfilePhoto: string | null
+  profilePhoto: string | null
   contactNumber: string | null
   address: string | null
   gender: $Enums.Gender | null
@@ -43,7 +43,7 @@ export type AdminMaxAggregateOutputType = {
   id: string | null
   name: string | null
   email: string | null
-  porfilePhoto: string | null
+  profilePhoto: string | null
   contactNumber: string | null
   address: string | null
   gender: $Enums.Gender | null
@@ -58,7 +58,7 @@ export type AdminCountAggregateOutputType = {
   id: number
   name: number
   email: number
-  porfilePhoto: number
+  profilePhoto: number
   contactNumber: number
   address: number
   gender: number
@@ -75,7 +75,7 @@ export type AdminMinAggregateInputType = {
   id?: true
   name?: true
   email?: true
-  porfilePhoto?: true
+  profilePhoto?: true
   contactNumber?: true
   address?: true
   gender?: true
@@ -90,7 +90,7 @@ export type AdminMaxAggregateInputType = {
   id?: true
   name?: true
   email?: true
-  porfilePhoto?: true
+  profilePhoto?: true
   contactNumber?: true
   address?: true
   gender?: true
@@ -105,7 +105,7 @@ export type AdminCountAggregateInputType = {
   id?: true
   name?: true
   email?: true
-  porfilePhoto?: true
+  profilePhoto?: true
   contactNumber?: true
   address?: true
   gender?: true
@@ -193,7 +193,7 @@ export type AdminGroupByOutputType = {
   id: string
   name: string
   email: string
-  porfilePhoto: string | null
+  profilePhoto: string | null
   contactNumber: string | null
   address: string | null
   gender: $Enums.Gender
@@ -229,7 +229,7 @@ export type AdminWhereInput = {
   id?: Prisma.StringFilter<"Admin"> | string
   name?: Prisma.StringFilter<"Admin"> | string
   email?: Prisma.StringFilter<"Admin"> | string
-  porfilePhoto?: Prisma.StringNullableFilter<"Admin"> | string | null
+  profilePhoto?: Prisma.StringNullableFilter<"Admin"> | string | null
   contactNumber?: Prisma.StringNullableFilter<"Admin"> | string | null
   address?: Prisma.StringNullableFilter<"Admin"> | string | null
   gender?: Prisma.EnumGenderFilter<"Admin"> | $Enums.Gender
@@ -245,7 +245,7 @@ export type AdminOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  porfilePhoto?: Prisma.SortOrderInput | Prisma.SortOrder
+  profilePhoto?: Prisma.SortOrderInput | Prisma.SortOrder
   contactNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   address?: Prisma.SortOrderInput | Prisma.SortOrder
   gender?: Prisma.SortOrder
@@ -265,7 +265,7 @@ export type AdminWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.AdminWhereInput[]
   NOT?: Prisma.AdminWhereInput | Prisma.AdminWhereInput[]
   name?: Prisma.StringFilter<"Admin"> | string
-  porfilePhoto?: Prisma.StringNullableFilter<"Admin"> | string | null
+  profilePhoto?: Prisma.StringNullableFilter<"Admin"> | string | null
   contactNumber?: Prisma.StringNullableFilter<"Admin"> | string | null
   address?: Prisma.StringNullableFilter<"Admin"> | string | null
   gender?: Prisma.EnumGenderFilter<"Admin"> | $Enums.Gender
@@ -280,7 +280,7 @@ export type AdminOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  porfilePhoto?: Prisma.SortOrderInput | Prisma.SortOrder
+  profilePhoto?: Prisma.SortOrderInput | Prisma.SortOrder
   contactNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   address?: Prisma.SortOrderInput | Prisma.SortOrder
   gender?: Prisma.SortOrder
@@ -301,7 +301,7 @@ export type AdminScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Admin"> | string
   name?: Prisma.StringWithAggregatesFilter<"Admin"> | string
   email?: Prisma.StringWithAggregatesFilter<"Admin"> | string
-  porfilePhoto?: Prisma.StringNullableWithAggregatesFilter<"Admin"> | string | null
+  profilePhoto?: Prisma.StringNullableWithAggregatesFilter<"Admin"> | string | null
   contactNumber?: Prisma.StringNullableWithAggregatesFilter<"Admin"> | string | null
   address?: Prisma.StringNullableWithAggregatesFilter<"Admin"> | string | null
   gender?: Prisma.EnumGenderWithAggregatesFilter<"Admin"> | $Enums.Gender
@@ -316,7 +316,7 @@ export type AdminCreateInput = {
   id?: string
   name: string
   email: string
-  porfilePhoto?: string | null
+  profilePhoto?: string | null
   contactNumber?: string | null
   address?: string | null
   gender: $Enums.Gender
@@ -331,7 +331,7 @@ export type AdminUncheckedCreateInput = {
   id?: string
   name: string
   email: string
-  porfilePhoto?: string | null
+  profilePhoto?: string | null
   contactNumber?: string | null
   address?: string | null
   gender: $Enums.Gender
@@ -346,7 +346,7 @@ export type AdminUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  porfilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
@@ -361,7 +361,7 @@ export type AdminUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  porfilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
@@ -376,7 +376,7 @@ export type AdminCreateManyInput = {
   id?: string
   name: string
   email: string
-  porfilePhoto?: string | null
+  profilePhoto?: string | null
   contactNumber?: string | null
   address?: string | null
   gender: $Enums.Gender
@@ -391,7 +391,7 @@ export type AdminUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  porfilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
@@ -405,7 +405,7 @@ export type AdminUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  porfilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
@@ -420,7 +420,7 @@ export type AdminCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  porfilePhoto?: Prisma.SortOrder
+  profilePhoto?: Prisma.SortOrder
   contactNumber?: Prisma.SortOrder
   address?: Prisma.SortOrder
   gender?: Prisma.SortOrder
@@ -435,7 +435,7 @@ export type AdminMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  porfilePhoto?: Prisma.SortOrder
+  profilePhoto?: Prisma.SortOrder
   contactNumber?: Prisma.SortOrder
   address?: Prisma.SortOrder
   gender?: Prisma.SortOrder
@@ -450,7 +450,7 @@ export type AdminMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
-  porfilePhoto?: Prisma.SortOrder
+  profilePhoto?: Prisma.SortOrder
   contactNumber?: Prisma.SortOrder
   address?: Prisma.SortOrder
   gender?: Prisma.SortOrder
@@ -526,7 +526,7 @@ export type AdminCreateWithoutUserInput = {
   id?: string
   name: string
   email: string
-  porfilePhoto?: string | null
+  profilePhoto?: string | null
   contactNumber?: string | null
   address?: string | null
   gender: $Enums.Gender
@@ -540,7 +540,7 @@ export type AdminUncheckedCreateWithoutUserInput = {
   id?: string
   name: string
   email: string
-  porfilePhoto?: string | null
+  profilePhoto?: string | null
   contactNumber?: string | null
   address?: string | null
   gender: $Enums.Gender
@@ -570,7 +570,7 @@ export type AdminUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  porfilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
@@ -584,7 +584,7 @@ export type AdminUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
-  porfilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contactNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
@@ -600,7 +600,7 @@ export type AdminSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   id?: boolean
   name?: boolean
   email?: boolean
-  porfilePhoto?: boolean
+  profilePhoto?: boolean
   contactNumber?: boolean
   address?: boolean
   gender?: boolean
@@ -616,7 +616,7 @@ export type AdminSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   id?: boolean
   name?: boolean
   email?: boolean
-  porfilePhoto?: boolean
+  profilePhoto?: boolean
   contactNumber?: boolean
   address?: boolean
   gender?: boolean
@@ -632,7 +632,7 @@ export type AdminSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   id?: boolean
   name?: boolean
   email?: boolean
-  porfilePhoto?: boolean
+  profilePhoto?: boolean
   contactNumber?: boolean
   address?: boolean
   gender?: boolean
@@ -648,7 +648,7 @@ export type AdminSelectScalar = {
   id?: boolean
   name?: boolean
   email?: boolean
-  porfilePhoto?: boolean
+  profilePhoto?: boolean
   contactNumber?: boolean
   address?: boolean
   gender?: boolean
@@ -659,7 +659,7 @@ export type AdminSelectScalar = {
   userId?: boolean
 }
 
-export type AdminOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "porfilePhoto" | "contactNumber" | "address" | "gender" | "isDeleted" | "deletedAt" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["admin"]>
+export type AdminOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "profilePhoto" | "contactNumber" | "address" | "gender" | "isDeleted" | "deletedAt" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["admin"]>
 export type AdminInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -679,7 +679,7 @@ export type $AdminPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     id: string
     name: string
     email: string
-    porfilePhoto: string | null
+    profilePhoto: string | null
     contactNumber: string | null
     address: string | null
     gender: $Enums.Gender
@@ -1115,7 +1115,7 @@ export interface AdminFieldRefs {
   readonly id: Prisma.FieldRef<"Admin", 'String'>
   readonly name: Prisma.FieldRef<"Admin", 'String'>
   readonly email: Prisma.FieldRef<"Admin", 'String'>
-  readonly porfilePhoto: Prisma.FieldRef<"Admin", 'String'>
+  readonly profilePhoto: Prisma.FieldRef<"Admin", 'String'>
   readonly contactNumber: Prisma.FieldRef<"Admin", 'String'>
   readonly address: Prisma.FieldRef<"Admin", 'String'>
   readonly gender: Prisma.FieldRef<"Admin", 'Gender'>
