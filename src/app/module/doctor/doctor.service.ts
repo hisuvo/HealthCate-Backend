@@ -70,41 +70,57 @@ const updateDoctor = async (
     throw new AppError(status.NOT_FOUND, "Doctor not found");
   }
 
-  const udpateDoctor = await prisma.$transaction(async (tx) => {
-    if (payload.doctor) {
+  await prisma.$transaction(async (tx) => {
+    const { doctor: doctorData, specialization } = payload;
+
+    if (doctorData) {
       await tx.doctor.update({
         where: {
           id: doctorId,
         },
         data: {
-          ...payload.doctor,
+          ...doctorData,
         },
       });
     }
-    if (payload.specialization && payload.specialization.length > 0) {
-      for (const specialty of payload.specialization) {
-        if (specialty.shouldDelete) {
+
+    if (specialization && specialization.length > 0) {
+      for (const specialty of specialization) {
+        const { specialtyId, shouldDelete } = specialty;
+
+        if (shouldDelete) {
           await tx.doctorSpecialty.delete({
             where: {
-              id: specialty.specialtyId,
+              specialtyId_doctorId: {
+                doctorId,
+                specialtyId,
+              },
             },
           });
         } else {
-          await tx.doctorSpecialty.update({
+          await tx.doctorSpecialty.upsert({
             where: {
-              id: specialty.specialtyId,
+              specialtyId_doctorId: {
+                doctorId,
+                specialtyId,
+              },
             },
-            data: {
-              ...specialty,
+
+            create: {
+              doctorId,
+              specialtyId,
             },
+
+            update: {},
           });
         }
       }
     }
-    return;
   });
 
-  return udpateDoctor;
+  const doctor = await getDoctorById(doctorId);
+
+  return doctor;
 };
 
 const deleteDoctor = async (doctorId: string) => {

@@ -39,7 +39,6 @@ export const checkAuth = (...authRole: Role[]) => {
           },
         });
 
-
         if (sessionExists && sessionExists.user) {
           const user = sessionExists.user;
 
@@ -83,11 +82,16 @@ export const checkAuth = (...authRole: Role[]) => {
             );
           }
           isAuth = true;
+
+          req.user = {
+            userId: user.id,
+            role: user.role,
+            email: user.email,
+          };
         }
       }
 
       //  Access Token Verification
-
       if (!accessToken && !isAuth) {
         throw new AppError(
           status.UNAUTHORIZED,
