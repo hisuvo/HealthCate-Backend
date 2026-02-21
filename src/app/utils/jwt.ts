@@ -15,12 +15,12 @@ const verifyToken = (token: string, secret: string) => {
   try {
     const decoded = jwt.verify(token, secret) as JwtPayload;
     return {
-      seccess: true,
+      success: true,
       data: decoded,
     };
   } catch (error: any) {
     return {
-      seccess: false,
+      success: false,
       message: error.message,
       error,
     };

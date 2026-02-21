@@ -4,12 +4,8 @@ import AppError from "../../errorHalper/AppError";
 import { auth } from "../../lib/auth";
 import { prisma } from "../../lib/prisma";
 import { tokenUtils } from "../../utils/token";
-
-interface IRegisterPatientPayload {
-  name: string;
-  email: string;
-  password: string;
-}
+import { ILoginPayload, IRegisterPatientPayload } from "./auth.interface";
+import { IRequestUser } from "../../interface/requestUser.interface";
 
 const registerPatient = async (payload: IRegisterPatientPayload) => {
   const { name, email, password } = payload;
@@ -71,11 +67,6 @@ const registerPatient = async (payload: IRegisterPatientPayload) => {
   }
 };
 
-interface ILoginPayload {
-  email: string;
-  password: string;
-}
-
 const loginPatient = async (payload: ILoginPayload) => {
   const { email, password } = payload;
 
@@ -118,4 +109,12 @@ const loginPatient = async (payload: ILoginPayload) => {
   return { ...data, accessToken, refreshToken };
 };
 
-export const AuthServices = { registerPatient, loginPatient };
+const getMe = async (payload: IRequestUser) => {
+  console.log(payload);
+};
+
+export const AuthServices = {
+  registerPatient,
+  loginPatient,
+  getMe,
+};
