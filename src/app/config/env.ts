@@ -16,6 +16,8 @@ interface EnvConfig {
   REFRESH_TOKEN_EXPIRE_IN: string;
   BETTER_AUTH_SESSION_TOKEN_EXPAIRE_IN: string;
   BETTER_AUTH_SESSION_TOKEN_UPDATE_AGE: string;
+  SUPER_ADMIN_EMAIL: string;
+  SUPER_ADMIN_PASSWORD: string;
 }
 
 const loadEnvVariables = (): EnvConfig => {
@@ -33,6 +35,8 @@ const loadEnvVariables = (): EnvConfig => {
     "REFRESH_TOKEN_EXPIRE_IN",
     "BETTER_AUTH_SESSION_TOKEN_EXPAIRE_IN",
     "BETTER_AUTH_SESSION_TOKEN_UPDATE_AGE",
+    "SUPER_ADMIN_EMAIL",
+    "SUPER_ADMIN_PASSWORD",
   ];
 
   requiredEnvVariable.forEach((variable) => {
@@ -60,6 +64,8 @@ const loadEnvVariables = (): EnvConfig => {
       env.BETTER_AUTH_SESSION_TOKEN_EXPAIRE_IN as string,
     BETTER_AUTH_SESSION_TOKEN_UPDATE_AGE:
       env.BETTER_AUTH_SESSION_TOKEN_UPDATE_AGE as string,
+    SUPER_ADMIN_EMAIL: env.SUPER_ADMIN_EMAIL as string,
+    SUPER_ADMIN_PASSWORD: env.SUPER_ADMIN_PASSWORD as string,
   };
 };
 

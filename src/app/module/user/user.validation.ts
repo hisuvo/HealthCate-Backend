@@ -62,36 +62,65 @@ const createDoctorZodSchema = z.object({
 });
 
 const createAdminZodValidationSchema = z.object({
-  password:z
-  .string("Password is required")
-  .min(6,"Password minimum length is 6")
-  .max(10,"Password maximum length is 10"),
+  password: z
+    .string("Password is required")
+    .min(6, "Password minimum length is 6")
+    .max(10, "Password maximum length is 10"),
 
   admin: z.object({
     name: z
-    .string("Name is required")
-    .min(5,"Name must be at least 5 characters")
-    .max(30,"Name must be at most 30 characters"),
+      .string("Name is required")
+      .min(5, "Name must be at least 5 characters")
+      .max(30, "Name must be at most 30 characters"),
 
     email: z.email("Invalied email address"),
 
     contactNumber: z
-    .string("Contact Number is required")
-    .min(11,"Contact number must be at least 11 characters")
-    .max(14,"Contact number must be at most 14 characters"),
+      .string("Contact Number is required")
+      .min(11, "Contact number must be at least 11 characters")
+      .max(14, "Contact number must be at most 14 characters"),
 
     address: z
-    .string("Address is required")
-    .min(10,"Address must be at least 10 characters")
-    .max(100,"Address must be at most 100 characters")
-    .optional(),
+      .string("Address is required")
+      .min(10, "Address must be at least 10 characters")
+      .max(100, "Address must be at most 100 characters")
+      .optional(),
 
     gender: z.enum([Gender.MALE, Gender.FMALE], "Gender either MALE or FMALE"),
-  })
-})
+  }),
+});
+
+const createSuperAdminZodValidationSchema = z.object({
+  password: z
+    .string("Password is required")
+    .min(6, "Password minimum length is 6")
+    .max(10, "Password maximum length is 10"),
+
+  admin: z.object({
+    name: z
+      .string("Name is required")
+      .min(5, "Name must be at least 5 characters")
+      .max(30, "Name must be at most 30 characters"),
+
+    email: z.email("Invalied email address"),
+
+    contactNumber: z
+      .string("Contact Number is required")
+      .min(11, "Contact number must be at least 11 characters")
+      .max(14, "Contact number must be at most 14 characters"),
+
+    address: z
+      .string("Address is required")
+      .min(10, "Address must be at least 10 characters")
+      .max(100, "Address must be at most 100 characters")
+      .optional(),
+
+    gender: z.enum([Gender.MALE, Gender.FMALE], "Gender either MALE or FMALE"),
+  }),
+});
 
 export const UserValidation = {
   createDoctorZodSchema,
-  createAdminZodValidationSchema
-}
-
+  createAdminZodValidationSchema,
+  createSuperAdminZodValidationSchema,
+};

@@ -37,4 +37,11 @@ router.post(
   userController.createAdmin,
 );
 
+// trial version
+router.post(
+  "/create-super-admin",
+  validationRequest(UserValidation.createSuperAdminZodValidationSchema),
+  userController.createSuperAdmin,
+);
+
 export const UserRoutes = router;

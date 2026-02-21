@@ -28,7 +28,21 @@ const createAdmin = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+// trial version adim wile superAdmin
+const createSuperAdmin = catchAsync(async (req: Request, res: Response) => {
+  const payload = req.body;
+  const result = await userService.createAdmin(payload);
+
+  sendResponse(res, {
+    httpStatusCode: status.CREATED,
+    success: true,
+    message: "SuperAdmin created successfull",
+    data: result,
+  });
+});
+
 export const userController = {
   createDoctor,
   createAdmin,
+  createSuperAdmin,
 };
