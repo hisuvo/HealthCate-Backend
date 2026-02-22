@@ -126,26 +126,39 @@ const logOutUser = catchAsync(async (req: Request, res: Response) => {
 
   const result = await AuthServices.logOutUser(sessionToken);
 
-  CookieUtils.clearCookie(res,"accessToken",{
-    httpOnly:true,
-    secure:true,
-    sameSite:"none",
-  })
-  CookieUtils.clearCookie(res,"refreshToken",{
-    httpOnly:true,
-    secure:true,
-    sameSite:"none",
-  })
-  CookieUtils.clearCookie(res,"better-auth.session-token",{
-    httpOnly:true,
-    secure:true,
-    sameSite:"none",
-  })
+  CookieUtils.clearCookie(res, "accessToken", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+  });
+  CookieUtils.clearCookie(res, "refreshToken", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+  });
+  CookieUtils.clearCookie(res, "better-auth.session-token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+  });
 
   sendResponse(res, {
     httpStatusCode: status.OK,
     success: true,
     message: "User logged out successfully",
+    data: result,
+  });
+});
+
+const verifyEmail = catchAsync(async (req: Request, res: Response) => {
+  const { email, otp } = req.body;
+
+  const result = await AuthServices.verifyEmail(email, otp);
+
+  sendResponse(res, {
+    httpStatusCode: status.OK,
+    success: true,
+    message: "Email verified successfully",
     data: result,
   });
 });
@@ -157,4 +170,5 @@ export const AuthController = {
   getNewToken,
   changePassword,
   logOutUser,
+  verifyEmail,
 };
