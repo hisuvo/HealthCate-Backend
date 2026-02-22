@@ -14,7 +14,7 @@ export const checkAuth = (...authRoles: Role[]) => {
     try {
       const sessionToken = CookieUtils.getCookie(
         req,
-        "better-auth.session_token",
+        "better-auth.session-token",
       );
       const accessToken = await CookieUtils.getCookie(req, "accessToken");
 
@@ -62,8 +62,6 @@ export const checkAuth = (...authRoles: Role[]) => {
             userId: user.id,
             role: user.role,
             email: user.email,
-            status: user.status,
-            isDeleted: user.isDeleted,
           };
         }
       }
